@@ -15,9 +15,15 @@ export class QuestionsDataService {
         new Question ( 6, "Title 6 question", "Text 6 question" )
     ]; 
 
-    public getQuestions() {
-        //return Promise.resolve(this.questions);
-        return this.questions;
+    public getQuestions() : Promise<Question[]> {
+        return Promise.resolve(this.questions);
+        //return this.questions;
+    }
+
+    public getQuestionByid(id : number) /*: Promise<Question>*/ {
+        return this.getQuestions()
+             .then(questions => questions.find(question => question.id == id));
+        //return this.questions;
     }
 
 }
